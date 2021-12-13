@@ -13,6 +13,9 @@ Express-session for Authentication
 
 ## Links to Site
 
+## Credits
+- I used the bootcamp activities in MVC # 23
+
 ## License
 
 ## 
