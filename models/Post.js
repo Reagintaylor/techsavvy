@@ -2,11 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class Post extends Model {
-  checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
-  }
-}
+class Post extends Model {}
 
 Post.init(
   {
@@ -29,13 +25,18 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8], [160]  //is this how you add a word limit?
+        len: [8, 300], //is this how you add a word limit?
     },
     date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      foreignkey: true, 
+    }
   },
+},
   {
     sequelize,
     timestamps: false,
