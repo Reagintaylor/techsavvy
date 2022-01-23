@@ -25,7 +25,7 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8, 300], //is this how you add a word limit?
+        len: [8, 300]
     },
     date: {
       type: DataTypes.DATE,
