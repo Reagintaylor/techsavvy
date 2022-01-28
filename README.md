@@ -19,3 +19,15 @@ Express-session for Authentication
 ## License
 
 ## 
+
+
+- Todo
+ - Design the front page
+  - design the other pages
+  - add the js for the pages
+  - style with css
+  - seeds?
+  - fix routes if necessary
+
+## Future Development
+- add functionality to the serch bar with local storage...etc

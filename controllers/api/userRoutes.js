@@ -69,12 +69,172 @@ router.post('/logout', (req, res) => {
   }
 });
 
+//  comment routes
 // creating a comment, withAuth added to ensure the user is loggedin before they can create a comment
 router.post('/comment', withAuth, async (req, res) => {
-  
+  try {
+    let newComment = await  Comment.create({
+      name: req.body.name,
+      comment: req.body.comment,
+      date: req.body.date,
+      post_id: req.body.post_id
+    });
+
+    const newPost = await Post.findByPk(req.body.post_id, {
+      include : [
+        {
+          model: Comment,
+          attributes: [
+            'id',
+            'name', 
+            'comment',
+            'date',
+          ]
+        }
+      ]
+    });
+
+    const post = newPost.get({ plain: true});
+    res.render('post', { post, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// comment delete
+router.delete('/:id', withAuth, (req, res) => {
+  try{
+    Comment.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(deletePost => {
+      if (!deletePost) {
+        res.status(400).json();
+        return;
+      }
+    })
+
+  } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+  }
 })
 
+//comment update
+router.post('/', withAuth, (req, res) => {
+  try{
+    if(req.session) {
+      Comment.create({
+        comment: req.body.comment,
+        name: req.session.name,
+        id: req.body.id,
+        date: req.body.date
+      })
+      .then(commentData => res.json(commentData))
+    } 
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+})
 
+// new post
+
+router.post('/newpost', withAuth, async (req, res) => {
+  try {
+    let newPost = await Post.create({
+      title: req.body.title,
+      author: req.body.author,
+      date: req.body.date,
+      post: req.body.post,
+      user_id: req.body.user_id,
+    });
+  
+    newPost = await Post.findAll({
+      attributes: [
+        'id',
+        'title',
+        'author',
+        'date',
+        'post'
+      ]
+    });
+
+    const posts = newPost.map((post) => post.get({ plain: true })
+    );
+
+    res.status(200).render('dash', {
+      posts,
+      loggedIn: req.session.loggedIn
+    });
+
+  } catch (err){
+     console.log(err);
+     res.status(500).json(err);
+  }
+})
+
+// deleting the post
+router.delete('/post/:id', withAuth, (req, res) => {
+  try {
+    Post.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(deletePost => {
+    if (!deletePost) {
+      res.status(400).json();
+      return;
+    }
+  })
+} catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+})
+
+// updating the post 
+router.post('/updatepost/:id', withAuth, async (req, res) => {
+  try {
+    const postReturn = await Post.update(
+      {content: req.body.comment_text}, 
+      {
+      where: {
+        id: req.body.post_id
+      }
+    });
+
+    if (!postReturn) {
+      res
+        .status(400)
+        .json({ message: 'Post not found' });
+      return;
+    }
+    postData = await Post.findAll({
+      attributes: [
+        'id',
+        'title',
+        'blogger',
+        'post_date',
+        'content']
+    });
+
+    const posts = postData.map((post) =>
+      post.get({ plain: true })
+    );
+    res.status(200).render('dash', {
+      posts,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 
 

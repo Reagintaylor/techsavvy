@@ -21,6 +21,10 @@ Comment.init(
       allowNull: false,
       unique: true, //comment should be unique, no duplicates
     },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    }, 
     post_id: {
       type: DataTypes.INTEGER,
       foreignkey: true,
