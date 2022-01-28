@@ -3,37 +3,37 @@ const { Comment } = require('../models/Comment');
 const commentData = [
     {
         "id": 1,
-        "name": "Reagin",
+        "name": "Sal",
         "comment": "Hey everybody",
         "post_id": 2
     },
     {
         "id": 1,
-        "name": "Ridge",
+        "name": "Lernantino",
         "comment": "wow, so cool",
         "post_id": 1
     },
     {
         "id": 1,
-        "name": "Jacob",
+        "name": "Jordan",
         "comment": "OMG",
         "post_id": 2
     },
     {
         "id": 1,
-        "name": "Bob",
+        "name": "Amiko",
         "comment": "sup",
         "post_id": 3
     },
     {
         "id": 1,
-        "name": "Bill",
+        "name": "Blake",
         "comment": "....",
         "post_id": 1
     },
     {
         "id": 1,
-        "name": "Jacob",
+        "name": "Jordan",
         "comment": "no way",
         "post_id": 3
     },
