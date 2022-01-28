@@ -22,12 +22,10 @@ Express-session for Authentication
 
 
 - Todo
- - Design the front page
-  - design the other pages
+ - handlebars
   - add the js for the pages
-  - style with css
-  - seeds?
-  - fix routes if necessary
+  - add routes
+- style with css
 
 ## Future Development
-- add functionality to the serch bar with local storage...etc
+- add functionality to the search bar with local storage...etc
