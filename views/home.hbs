@@ -1,8 +1,53 @@
-{{!-- link the javascript --}}
-<main>
-<h1> Welcome to Your Blog Site!!</h1>
-<button></button>
-<a id="newpost" href="">New Post</a> 
+<section class="post-container d-flex row flex-wrap justify-content-around">
+    {{#each posts as |post| }}
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">
+                <a href="/post/{{id}}">{{title }}</a>
+
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted"><span>{{id}}</span>
+                <br> by:{{User.username}} </span>
+                <br> on {{format_date createdAt}}
+            </h6>
+            <p class="card-text">{{body}}</p>
+            {{#if post.Comment}}
+            <section class="card commentcard text-center">
+                <div class="card-header">
+                    <h6>Comments</h6>
+                </div>
+
+                <div class="card-body">
+                    {{#each post.Comment as |Comment|}}
+                    <div>
+                        <p>
+                            {{body}}
+                        </p>
+                        <p>
+                            {{User.username}}, {{format_date createdAt}}
+                        </p>
+                    </div>
+                    {{/each}}
+                </div>
+            </section>
+            {{/if}}
+            <form id="new-comment-form" class="card commentform text-center">
+
+                <p>Add New Comment</p>
 
 
-</main>
+                <div class="card-body" style="width:auto">
+                    <input type="hidden" name="post-id" value="{{post.id}}" />
+
+                    <textarea name="comment-body" class="form-input" style="margin-left: -10%;"></textarea>
+
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    {{/each}}
+</section>
+<script src="js/comment.js"

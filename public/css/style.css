@@ -5,3 +5,194 @@ body {
 main {
     background-color: lightgray;
 }
+
+html {
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+    font-family: "Orbitron", sans-serif;
+  
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: top;
+    width: 100%;
+    height: 100%;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  header h1 {
+    color: #042c71;
+    text-shadow: 0 0 15px white;
+    font-size: 3rem;
+  }
+  header a {
+    color: #042c71;
+    text-shadow: 0 0 15px white;
+    font-size: 1.5rem;
+  }
+  
+  .bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #b5b7bb 50%, #084387 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: 0.5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+  }
+  
+  .bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+  }
+  
+  .bg3 {
+    animation-duration: 5s;
+  }
+  
+  /* .content {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.25em;
+    box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    left: 50%;
+    padding: 10vmin;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  } */
+  
+  h1 {
+    font-family: monospace;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateX(-25%);
+    }
+    100% {
+      transform: translateX(25%);
+    }
+  }
+  
+  .blurred-box {
+    position: relative;
+    width: 250px;
+    height: 350px;
+    top: calc(50% - 175px);
+    left: calc(50% - 125px);
+    background: inherit;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  
+  .blurred-box:after {
+    content: "";
+    width: 300px;
+    height: 300px;
+    background: inherit;
+    position: absolute;
+    left: -25px;
+    right: 0;
+    top: -25px;
+    bottom: 0;
+    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.05);
+    filter: blur(10px);
+  }
+  
+  /* Form which you dont need */
+  .user-login-box {
+    position: relative;
+    margin-top: 50px;
+    text-align: center;
+    z-index: 1;
+  }
+  .user-login-box > * {
+    display: inline-block;
+    width: 200px;
+  }
+  
+  .user-icon {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border-radius: 50%;
+    background-size: contain;
+    background-image: url(../img/userIcon.png);
+  }
+  .user-icon-signup {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border-radius: 50%;
+    background-size: contain;
+    background-image: url(../img/signupIcon.jpg);
+  }
+  
+  .user-name {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #042c71;
+  }
+  
+  input.user-password {
+    color: #042c71;
+  }
+  
+  .loginbox,
+  .signupbox * {
+    text-align: center;
+    color: #042c71;
+  }
+  
+  .login,
+  .signup,
+  .card-body button {
+    background-color: #042c71;
+    color: #b5b7bb;
+  }
+  .logout * {
+    color: #b5b7bb;
+    text-shadow: 0 0 10px #042c71;
+  }
+  
+  .commentcard,
+  .postcard {
+    background-color: #042c71;
+    color: #b5b7bb;
+  }
+  
+  .commentform {
+    color: #042c71;
+  }
+  
+  .addSection {
+    margin-left: 22%;
+    background-color: #042c71;
+    color: #b5b7bb;
+  }
+  #personalPosttitle {
+    color: #b5b7bb;
+    text-shadow: 0 0 25px #042c71;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  textarea {
+    border-color: #042c71;
+    border-width: 2%;
+    color: #042c71;
+  }
+  
+  .commentBox {
+    background-color: #042c71;
+    color: white;
+  }

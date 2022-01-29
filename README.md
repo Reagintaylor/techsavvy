@@ -22,9 +22,8 @@ Express-session for Authentication
 
 
 - Todo
- - handlebars
-  - add the js for the pages
-  - add routes
+ - fix bugs 
+ - refactor code
 - style with css
 
 ## Future Development
