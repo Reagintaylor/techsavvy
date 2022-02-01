@@ -28,3 +28,11 @@ Express-session for Authentication
 
 ## Future Development
 - add functionality to the search bar with local storage...etc
+
+
+- npm i
+- mysql -u root -p
+- source db/schema.sql
+- quit
+- node seeds
+
